@@ -1,15 +1,15 @@
+/*let computerChoice
+let humanChoice
+
 function getComputerChoice(){
     return parseInt(Math.random() * (3 )  + 1);
 }
-
-function getHumanChoice(){
-    let choice
-    do
-        choice = parseInt(prompt("Enter a choice 1 for rock\n2 for paper\n3 for scissors: "));
-    while(choice<1 || choice>3)
-    return choice;
-}
-
+*/
+    const choice = document.querySelector("#rock");
+    choice.addEventListener("click", () => {
+        console.log("rock")
+    })
+/*
 function playRound(humanChoice, computerChoice){
     if(humanChoice === computerChoice){
         return "It's a tie!";
@@ -28,11 +28,18 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
+const resultdiv = document.querySelector(".result")
+*/
+
+/*
+console.log(getHumanChoice)
+resultdiv.textContent = playRound(humanChoice, computerChoice);
+
+
+
 let humanScore=0, computerScore=0,rounds;
-rounds = parseInt(prompt("Enter rounds number"));
-for(let i=0;i<rounds;i++){
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
+//rounds = parseInt(prompt("Enter rounds number"));
+
     let result = playRound(humanChoice, computerChoice);
     console.log(result);
     if(result.includes("win")){
@@ -41,7 +48,7 @@ for(let i=0;i<rounds;i++){
         computerScore++;
     }
     console.log(`Human score: ${humanScore} Computer score: ${computerScore}`);
-}
+
 console.log(`Final score - Human: ${humanScore} Computer: ${computerScore}`);
 if(humanScore>computerScore){
     console.log("Human wins!");
@@ -51,3 +58,4 @@ if(humanScore>computerScore){
     console.log("It's a tie!");
 }
 
+*/

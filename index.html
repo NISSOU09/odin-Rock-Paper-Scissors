@@ -4,8 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="JS.js"></script> 
+    <style>
+        .result{
+            background-color: #f0f0f0;
+            display: flex;
+            border: solid;
+            justify-content: space-around;
+        }
+        .name{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <button type="button" value="1" id="rock" class="btn">
+                rock
+        </button>
+        <button type="button" value="2" id="paper" class="btn">
+            paper
+        </button>
+        <button type="button" value="3" id="scissors" class="btn">
+            scissors
+        </button>
+    </div>
+    <div class="result">
+        <div class="name">
+            YOU <br>
+            <div class="score" id="human">0</div>
+        </div>
+        <div class="name">
+            computer <br>
+            <div class="score" id="computer">0</div>
+        </div>
+    </div>
 </body>
 </html>
+
+<script>
+let computerChoice
+let humanChoice
+const container = document.querySelector(".container")
+let ready = false
+const buttons = document.querySelectorAll(".btn")
+let humanScore = 0
+let computerScore = 0
+let i = 0
+
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        humanChoice = parseInt(button.value)
+        computerChoice = Math.floor(Math.random() * 3) + 1
+        console.log(humanChoice, computerChoice)
+        playRound(humanChoice, computerChoice)
+        const humanresult = document.querySelector("#human")
+        const computerresult = document.querySelector("#computer")
+        humanresult.textContent = humanScore
+        computerresult.textContent = computerScore
+        i++
+        if(i == 5){
+            const result = document.querySelector(".result")
+            if(humanScore > computerScore){
+                result.textContent = "You win!"
+                } else if(humanScore < computerScore){
+                    result.textContent = "Computer wins!"
+                    } else {
+                        result.textContent = "It's a tie!"
+                        }
+        }
+    })
+})
+
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        if (i >= 5) {
+            buttons.forEach(btn => {
+                container.removeChild(btn); // Remove each button
+            });
+        }
+    });
+});
+
+function playRound(humanChoice, computerChoice){
+    if(humanChoice === computerChoice){
+        computerScore++
+        humanScore++
+    } else if(humanChoice === 1 && computerChoice === 2){
+        computerScore++
+    } else if(humanChoice === 1 && computerChoice === 3){
+        humanScore++
+    } else if(humanChoice === 2 && computerChoice === 1){
+        humanScore++
+    } else if(humanChoice === 2 && computerChoice === 3){
+        computerScore++
+    } else if(humanChoice === 3 && computerChoice === 1){
+        computerScore++
+    } else if(humanChoice === 3 && computerChoice === 2){
+        humanScore++
+    }
+}
+
+</script>
